@@ -9,14 +9,81 @@
         </script>
     </head>
     <body>
-        <canvas id="meu_canvas" width="200" height="200"></canvas>
+        <canvas id="meu_canvas_estrela" width="300" height="300"></canvas>
         <script>
-            var canvas = document.getElementById('meu_canvas');
-            
+
+            // Canvas e contexto
+            var canvas = document.getElementById('meu_canvas_estrela');       
             var context = canvas.getContext('2d');
             
-            context.fillRect(50, 50, 100, 100);
+            //iniciar o path (apaga desenhos anteriores)
+            context.beginPath();
+
+            //desenhar uma estrela
+            context.moveTo(75, 250); //ponto inicial
+            context.lineTo(150, 50); 
+            context.lineTo(225, 250); 
+            context.lineTo(50, 120); 
+            context.lineTo(250, 120); 
+            context.lineTo(75, 250);
+
+            //configurar a linha
+            context.lineWidth = 2;
+            context.strokeStyle = 'red';
+
+            //traçar as linhas do caminho
+            context.stroke();            
+        </script>
+        <canvas id="meu_canvas_arcos" width="300" height="300"></canvas>
+        <script>
             
+            // Canvas e Contexto: Arcos
+            var canvas = document.getElementById('meu_canvas_arcos');
+            var context = canvas.getContext('2d');
+
+            //cores e esoessura da linha
+            context.fillStyle = 'gray';
+            context.strokeStyle = 'black';
+            context.lineWidth = 2;
+
+            
+            // iniciar o path (apaga desenhos anteriores)
+            //primeiro arco
+            context.beginPath();
+
+            context.arc(
+                50,
+                50,
+                40,
+                90*Math.PI/180,
+                270*Math.PI/180,
+                false
+                );
+            context.fill();
+            context.stroke();
+
+            //segundo arco
+            context.beginPath();
+            context.arc(
+                150,
+                50,
+                40,
+                90*Math.PI/180,
+                270*Math.PI/180,
+                true);
+            context.fill();
+            context.stroke();
+
+            //circunferencia completa
+            context.beginPath();
+            context.arc(
+                250,
+                50,
+                40,
+                0,
+                2*Math.PI);
+            context.fill();
+            context.stroke();
         </script>
     </body>
 </html>
